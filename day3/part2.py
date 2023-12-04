@@ -20,9 +20,6 @@ with open('./input.txt') as data:
         lines[line_index] = '.' + lines[line_index] + '.'
     part_num_sum = 0
     for line_num in range(1, len(lines) - 1):
-        line = lines[line_num]
-        prev_line = lines[line_num - 1]
-        next_line = lines[line_num + 1]
         for num_match in num_regex.finditer(line):
             adjacent_indices = get_adjacent_indices(line_num, num_match.start(), num_match.end())
             for adjacent_index in adjacent_indices:
