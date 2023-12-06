@@ -1,5 +1,5 @@
 import sys
-from copy import copy
+
 
 class eRange:
     def __init__(self, start, end = None, span = None) -> None:
@@ -108,21 +108,6 @@ class eRangeCollection:
                 range_idx += 1
         return self
 
-
-# a = eRangeCollection()
-# a.add_range(eRange(start = 0, end = 10))
-# a.add_range(eRange(start = 20, end = 30))
-# print(a)
-# print(a.subtract_range(eRange(start = 0, end = 4)))
-# print(a.subtract_range(eRange(start = 20, end = 30)))
-
-# a = eRangeCollection()
-# a.add_range(eRange(start = 46, end = 56))
-# a.add_range(eRange(start = 74, end = 87))
-# a.add_range(eRange(start = 90, end = 98))
-# print(a)
-# print(a.subtract_range(eRange(start = 56, end = 92)))
-# print(a.subtract_range(eRange(start = 93, end = 96)))
 
 with open('./input.txt') as data:
     lines = data.readlines()
