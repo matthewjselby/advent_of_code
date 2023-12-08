@@ -1,21 +1,5 @@
 import math
 
-def prime_factors(num):
-    prime_factors = set()
-    if num % 2 == 0:
-        prime_factors.add(2)
-    while num % 2 == 0:
-        num = num // 2
-        if num == 1:
-            return prime_factors
-    for factor in range(3, num + 1, 2):
-        if num % factor == 0:
-            prime_factors.add(factor)
-            while num % factor == 0:
-                num = num // factor
-                if num == 1:
-                    return prime_factors
-
 with open('./input.txt') as data:
     lines = data.readlines()
     instructions = lines.pop(0).strip()
