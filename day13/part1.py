@@ -1,5 +1,3 @@
-import math
-
 def find_reflection_point(lst):
     for l in range(len(lst) - 1):
         r = l + 1
