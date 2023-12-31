@@ -1,3 +1,5 @@
+import numpy as np
+
 with open('./input.txt') as data:
     # parse input data
     garden_map = [list(line.strip()) for line in data.readlines()]
@@ -35,19 +37,10 @@ with open('./input.txt') as data:
 
         return len(reachable_plots)
 
-    # find the number of reachable plots if starting with an even number of steps and an odd number of steps (with enough steps to fill the map)
-    # reachable_plots_even = count_reachable_plots(starting_position, num_rows * 2)
-    # reachable_plots_odd = count_reachable_plots(starting_position, num_rows * 2 + 1)
-    x0 = count_reachable_plots(starting_position, 65)
-    x1 = count_reachable_plots(starting_position, 65 + num_rows)
-    x2 = count_reachable_plots(starting_position, 65 + (2 * num_rows))
-    print(x0, x1, x2)
+    # find number of reachable plots at 65, 196, and 327
+    points = [(i, count_reachable_plots(starting_position, 65 + i * 131)) for i in range(3)]
 
-    a0 = x0
-    a1 = x1 - x0
-    a2 = x2 - x1
-
-    def quad(steps_remaining):
-        return a0 + a1 * steps_remaining + (steps_remaining * (steps_remaining - 1) // 2) * (a2 - a1)
-
-    print(quad(26501365 // num_rows))
+    # fit found points to a quadratic equation
+    coefficients = np.polyfit(*zip(*points), 2)
+    # interpolate answer
+    print(round(np.polyval(coefficients, 202300)))
